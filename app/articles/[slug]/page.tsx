@@ -3,17 +3,25 @@ import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
-// Not using any extra Props types — Next.js infers them correctly
-export async function generateStaticParams() {
+type ArticleParams = {
+  params: {
+    slug: string;
+  };
+};
+
+// ✅ Typing static params this way prevents misinterpretation
+export async function generateStaticParams(): Promise<ArticleParams['params'][]> {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
+
   return files.map((filename) => ({
     slug: filename.replace('.md', ''),
   }));
 }
 
-// No custom Props type — just destructure from function signature
-export default async function Page({ params }: { params: { slug: string } }) {
-  const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
+// ✅ Correct structure — do NOT use Props alias or PageProps constraint
+export default async function Page({ params }: ArticleParams) {
+  const { slug } = params;
+  const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
   try {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -27,6 +35,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
           <p className="text-gray-500 text-sm mb-6">{data.date}</p>
+
           <div className="prose prose-gray max-w-none">
             <ReactMarkdown>{content}</ReactMarkdown>
           </div>
