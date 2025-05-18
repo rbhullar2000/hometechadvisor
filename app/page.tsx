@@ -1,19 +1,18 @@
 'use client';
 
-import SmartHomeSections from '@/components/SmartHomeSections';
 import ArticleList from '@/components/ArticleList';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Camera, Lock, Bell, Thermometer, Lightbulb, Mic } from 'lucide-react';
+import { Camera, Lock, Bell, Thermometer, Lightbulb } from 'lucide-react';
 
 export default function HomePage() {
   const categories = [
-  { name: 'Smart Cameras', icon: <Camera className="w-6 h-6 text-blue-500" />, href: '/categories/cameras' },
-  { name: 'Smart Locks', icon: <Lock className="w-6 h-6 text-blue-500" />, href: '/categories/locks' },
-  { name: 'Video Doorbells', icon: <Bell className="w-6 h-6 text-blue-500" />, href: '/categories/doorbells' },
-  { name: 'Thermostats', icon: <Thermometer className="w-6 h-6 text-blue-500" />, href: '/categories/thermostats' },
-  { name: 'Lighting', icon: <Lightbulb className="w-6 h-6 text-blue-500" />, href: '/categories/lighting' },
-];
+    { name: 'Smart Cameras', icon: <Camera className="w-6 h-6 text-blue-500" />, href: '/categories/cameras' },
+    { name: 'Smart Locks', icon: <Lock className="w-6 h-6 text-blue-500" />, href: '/categories/locks' },
+    { name: 'Video Doorbells', icon: <Bell className="w-6 h-6 text-blue-500" />, href: '/categories/doorbells' },
+    { name: 'Thermostats', icon: <Thermometer className="w-6 h-6 text-blue-500" />, href: '/categories/thermostats' },
+    { name: 'Lighting', icon: <Lightbulb className="w-6 h-6 text-blue-500" />, href: '/categories/lighting' },
+  ];
 
   const featured = [
     {
