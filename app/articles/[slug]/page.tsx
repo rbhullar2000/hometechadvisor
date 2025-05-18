@@ -3,18 +3,19 @@ import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
   return files.map((filename) => ({
     slug: filename.replace('.md', ''),
   }));
 }
 
-type PageProps = {
+// ✅ Define inline type for params directly in the function argument
+export default async function ArticlePage({
+  params,
+}: {
   params: { slug: string };
-};
-
-export default function ArticlePage({ params }: PageProps) {
+}) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
@@ -30,13 +31,14 @@ export default function ArticlePage({ params }: PageProps) {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
           <p className="text-gray-500 text-sm mb-6">{data.date}</p>
+
           <div className="prose prose-gray max-w-none">
             <ReactMarkdown>{content}</ReactMarkdown>
           </div>
         </div>
       </main>
     );
-  } catch (err) {
+  } catch {
     return (
       <main className="p-10 text-center">
         <h1 className="text-2xl font-bold">Article Not Found</h1>
