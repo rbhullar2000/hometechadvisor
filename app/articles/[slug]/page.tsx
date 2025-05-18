@@ -4,31 +4,16 @@ import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 
-// Define your own type — do NOT import from `.next/types/...`
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
-// Generate static paths for all markdown files in `content/articles`
-export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
-
-  return files.map((filename) => ({
-    slug: filename.replace('.md', ''),
-  }));
-}
-
-// Server component for dynamic article pages
-export default async function ArticlePage({ params }: Props) {
+// ✅ Type-safe server component props
+export default async function ArticlePage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = params;
-
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
-  if (!fs.existsSync(filePath)) {
-    notFound();
-  }
+  if (!fs.existsSync(filePath)) return notFound();
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { content, data } = matter(fileContent);
@@ -56,4 +41,13 @@ export default async function ArticlePage({ params }: Props) {
       </div>
     </main>
   );
+}
+
+// ✅ Static route generation
+export async function generateStaticParams() {
+  const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
+
+  return files.map((filename) => ({
+    slug: filename.replace('.md', ''),
+  }));
 }
