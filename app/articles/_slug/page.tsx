@@ -10,7 +10,7 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ DO NOT use PageProps or type constraints that reference .next/types
+// ✅ Dynamic page with inline type to avoid Vercel PageProps inference
 export default async function Page({
   params,
 }: {
@@ -31,7 +31,6 @@ export default async function Page({
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
           <p className="text-gray-500 text-sm mb-6">{data.date}</p>
-
           <div className="prose prose-gray max-w-none">
             <ReactMarkdown>{content}</ReactMarkdown>
           </div>
