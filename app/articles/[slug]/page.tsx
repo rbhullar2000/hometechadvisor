@@ -1,27 +1,16 @@
-// app/articles/[slug]/page.tsx
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
-// Define props for static params
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-// Static route generation for all article slugs
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
   return files.map((filename) => ({
     slug: filename.replace('.md', ''),
   }));
 }
 
-// ✅ Do not make this async — just return sync JSX
-export default function ArticlePage({ params }: PageProps) {
+export default function ArticlePage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
@@ -35,10 +24,7 @@ export default function ArticlePage({ params }: PageProps) {
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { content, data } = matter(fileContent) as {
-    content: string;
-    data: { title: string; date: string };
-  };
+  const { content, data } = matter(fileContent);
 
   return (
     <main className="bg-white text-gray-900 px-4 py-10">
