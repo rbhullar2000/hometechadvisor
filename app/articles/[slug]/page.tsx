@@ -1,3 +1,5 @@
+// app/articles/[slug]/page.tsx
+
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -13,11 +15,16 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
   if (!fs.existsSync(filePath)) {
-    notFound(); // Renders 404 page
+    notFound();
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
