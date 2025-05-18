@@ -4,20 +4,8 @@ import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
-  return files.map((filename) => ({
-    slug: filename.replace('.md', ''),
-  }));
-}
-
-export default async function Page({ params }: Params) {
+// ✅ Do NOT define a separate type — inline it to avoid type confusion
+export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
@@ -38,4 +26,11 @@ export default async function Page({ params }: Params) {
       </div>
     </main>
   );
+}
+
+export async function generateStaticParams() {
+  const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
+  return files.map((filename) => ({
+    slug: filename.replace('.md', ''),
+  }));
 }
