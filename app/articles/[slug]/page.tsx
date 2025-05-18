@@ -3,10 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
-type Props = {
-  params: { slug: string };
-};
-
+// Not using any extra Props types — Next.js infers them correctly
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
   return files.map((filename) => ({
@@ -14,9 +11,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: Props) {
-  const { slug } = params;
-  const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
+// No custom Props type — just destructure from function signature
+export default async function Page({ params }: { params: { slug: string } }) {
+  const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
 
   try {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
