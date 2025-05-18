@@ -3,19 +3,22 @@ import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
-export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateStaticParams(): Promise<Props['params'][]> {
+  const articlesDir = path.join(process.cwd(), 'content/articles');
+  const files = fs.readdirSync(articlesDir);
+
   return files.map((filename) => ({
     slug: filename.replace('.md', ''),
   }));
 }
 
-// ✅ Define inline type for params directly in the function argument
-export default async function ArticlePage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function ArticlePage({ params }: Props) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
