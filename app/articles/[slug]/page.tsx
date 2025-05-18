@@ -2,12 +2,13 @@ import { getArticle, getAllArticleSlugs } from '@/lib/articles';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 
-interface Props {
+type Props = {
   params: {
     slug: string;
   };
-}
+};
 
+// ✅ Pre-generates all static paths (e.g. /articles/top-smart-doorbells)
 export async function generateStaticParams() {
   return getAllArticleSlugs();
 }
