@@ -3,12 +3,6 @@ import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
   return files.map((filename) => ({
@@ -16,7 +10,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PostPage({ params }: Props) {
+// ✅ INLINE typing to satisfy Next.js 15 PageProps constraints
+export default async function ArticlePage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
@@ -32,7 +31,6 @@ export default async function PostPage({ params }: Props) {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
           <p className="text-gray-500 text-sm mb-6">{data.date}</p>
-
           <div className="prose prose-gray max-w-none">
             <ReactMarkdown>{content}</ReactMarkdown>
           </div>
@@ -42,7 +40,7 @@ export default async function PostPage({ params }: Props) {
   } catch {
     return (
       <main className="p-10 text-center">
-        <h1 className="text-2xl font-bold">Post Not Found</h1>
+        <h1 className="text-2xl font-bold">Article Not Found</h1>
         <p className="text-gray-600">We couldn’t find this post.</p>
       </main>
     );
