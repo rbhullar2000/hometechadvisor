@@ -4,9 +4,11 @@ import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 
-type Props = {
-  params: { slug: string };
-};
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
@@ -15,8 +17,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ArticlePage({ params }: Props) {
-  const slug = await params?.slug;
+export default async function ArticlePage({ params }: PageProps) {
+  const { slug } = params;
 
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
