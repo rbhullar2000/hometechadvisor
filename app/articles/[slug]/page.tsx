@@ -12,7 +12,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: any }) {
+export default async function Page({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const slug = params.slug;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
