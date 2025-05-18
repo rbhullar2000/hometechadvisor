@@ -4,15 +4,17 @@ import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 
-// This tells Next.js which routes to generate statically at build time
+// ✅ Static params for pre-rendering
 export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
-  return files.map((filename) => ({
-    slug: filename.replace('.md', ''),
+  const dir = path.join(process.cwd(), 'content/articles');
+  const files = fs.readdirSync(dir);
+
+  return files.map((file) => ({
+    slug: file.replace('.md', ''),
   }));
 }
 
-// ✅ Correctly typed page export for dynamic routes
+// ✅ Final page component — properly typed for Next.js App Router
 export default async function Page({
   params,
 }: {
@@ -21,9 +23,7 @@ export default async function Page({
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
-  if (!fs.existsSync(filePath)) {
-    return notFound();
-  }
+  if (!fs.existsSync(filePath)) return notFound();
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { content, data } = matter(fileContent);
