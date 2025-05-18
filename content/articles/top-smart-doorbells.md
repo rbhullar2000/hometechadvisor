@@ -2,7 +2,7 @@
 title: "Top Smart Doorbells of 2025"
 date: "2025-05-20"
 slug: "top-smart-doorbells"
-excerpt: "We tested and ranked the best video doorbells from Ring, Nest, Eufy and more. Here's what stood out."
+excerpt: "We tested and ranked the best video doorbells from Ring, Nest, Eufy and more. here&rsquo;s what stood out."
 coverImage: /images/doorbells-thumb.jpg
 ---
 
