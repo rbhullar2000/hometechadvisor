@@ -40,7 +40,7 @@ export default async function Page({ params }: Props) {
         </div>
       </main>
     );
-  } catch (err) {
+  } catch {
     notFound();
   }
 }
