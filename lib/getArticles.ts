@@ -1,35 +1,27 @@
-import fs from 'fs/promises';
+import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-export type Article = {
-  slug: string;
-  title: string;
-  date: string;
-  description: string;
-  coverImage?: string;
-};
+export function getArticle(slug: string) {
+  const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
-export async function getArticles(): Promise<Article[]> {
-  const postsDirectory = path.join(process.cwd(), 'content', 'articles');
-  const filenames = await fs.readdir(postsDirectory);
-
-  const articles: Article[] = [];
-
-  for (const filename of filenames) {
-    if (!filename.endsWith('.md')) continue;
-    const filePath = path.join(postsDirectory, filename);
-    const fileContent = await fs.readFile(filePath, 'utf8');
-    const { data } = matter(fileContent);
-
-    articles.push({
-      slug: filename.replace('.md', ''),
-      title: data.title,
-      date: data.date,
-      description: data.excerpt || '',
-      coverImage: data.coverImage || '',
-    });
+  if (!fs.existsSync(filePath)) {
+    return null;
   }
 
-  return articles;
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const { content, data } = matter(fileContent);
+
+  return {
+    content,
+    metadata: data,
+  };
+}
+
+export function getAllArticleSlugs() {
+  const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
+
+  return files.map((filename) => ({
+    slug: filename.replace('.md', ''),
+  }));
 }
