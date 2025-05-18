@@ -3,14 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
-type ArticleParams = {
-  params: {
-    slug: string;
-  };
-};
-
-// ✅ Typing static params this way prevents misinterpretation
-export async function generateStaticParams(): Promise<ArticleParams['params'][]> {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
 
   return files.map((filename) => ({
@@ -18,8 +11,12 @@ export async function generateStaticParams(): Promise<ArticleParams['params'][]>
   }));
 }
 
-// ✅ Correct structure — do NOT use Props alias or PageProps constraint
-export default async function Page({ params }: ArticleParams) {
+// ✅ Inline the type directly to avoid PageProps conflict
+export default async function Page({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
@@ -35,7 +32,6 @@ export default async function Page({ params }: ArticleParams) {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
           <p className="text-gray-500 text-sm mb-6">{data.date}</p>
-
           <div className="prose prose-gray max-w-none">
             <ReactMarkdown>{content}</ReactMarkdown>
           </div>
