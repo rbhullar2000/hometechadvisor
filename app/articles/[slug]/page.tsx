@@ -2,26 +2,34 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
-import { notFound } from 'next/navigation';
+
+interface ArticlePageProps {
+  params: {
+    slug: string;
+  };
+}
 
 export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
-  return files.map((filename) => ({
-    slug: filename.replace('.md', ''),
+  const articlesDir = path.join(process.cwd(), 'content/articles');
+  const files = fs.readdirSync(articlesDir);
+
+  return files.map((file) => ({
+    slug: file.replace('.md', ''),
   }));
 }
 
-export default async function Page({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
+export default async function ArticlePage({ params }: ArticlePageProps) {
+  const { slug } = params;
+  const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
-  if (!fs.existsSync(filePath)) return notFound();
+  if (!fs.existsSync(filePath)) {
+    return {
+      notFound: true,
+    };
+  }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { content, data } = matter(fileContent);
+  const { data, content } = matter(fileContent);
 
   return (
     <main className="bg-white text-gray-900 px-4 py-10">
