@@ -13,12 +13,7 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ This is the only allowed format in Next.js App Router
-export default async function Page({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function Page({ params }: any) {
   const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
 
   if (!fs.existsSync(filePath)) {
