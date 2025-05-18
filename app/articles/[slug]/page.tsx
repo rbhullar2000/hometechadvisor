@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
@@ -10,13 +11,18 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ FIXED HERE: Inline type — this solves the build error
-export default async function Page({ params }: { params: { slug: string } }) {
+// ✅ FIXED: Proper async page export with correct inline typing
+export default async function Page({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
+  // Gracefully handle missing article
   if (!fs.existsSync(filePath)) {
-    return <main className="p-10">Article not found.</main>;
+    return notFound();
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
