@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
+// 👇 Add this import
+import type { PageProps } from '../../../../.next/types/app/articles/[slug]/page';
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
@@ -10,11 +12,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ArticlePage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+// 👇 Use PageProps type from Next.js
+export default async function ArticlePage({ params }: PageProps) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
