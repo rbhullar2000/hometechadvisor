@@ -24,7 +24,7 @@ export default function AboutPage() {
         <ul className="list-disc list-inside space-y-2 text-gray-800">
           <li>Independent and unbiased product reviews</li>
           <li>Clear pros and cons — no sugarcoating</li>
-          <li>Buyer’s guides tailored to real-world needs</li>
+          <li>Buyer&#39;s guides tailored to real-world needs</li>
           <li>Regular updates as new smart home gear hits the market</li>
         </ul>
       </div>
