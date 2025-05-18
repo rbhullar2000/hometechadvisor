@@ -8,17 +8,21 @@ import ReactMarkdown from 'react-markdown';
 export function generateStaticParams() {
   const dir = path.join(process.cwd(), 'content/articles');
   const files = fs.readdirSync(dir);
+
   return files.map((file) => ({
     slug: file.replace(/\.md$/, ''),
   }));
 }
 
-interface Props {
-  params: { slug: string };
+interface ArticlePageProps {
+  params: {
+    slug: string;
+  };
 }
 
-export default function ArticlePage({ params }: Props) {
-  const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
+export default function ArticlePage({ params }: ArticlePageProps) {
+  const { slug } = params;
+  const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
   if (!fs.existsSync(filePath)) {
     return (
