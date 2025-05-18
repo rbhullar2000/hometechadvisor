@@ -4,29 +4,33 @@ import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 
-// Use this type from Next.js to match route structure
-type PageProps = {
+// ✅ Correctly typed PageProps
+interface PageProps {
   params: {
     slug: string;
   };
-};
+}
 
+// ✅ Generates static paths
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
+
   return files.map((filename) => ({
     slug: filename.replace('.md', ''),
   }));
 }
 
+// ✅ Do NOT make `params` async or use await on it
 export default async function Page({ params }: PageProps) {
-  const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
+  const slug = params.slug;
+  const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
   if (!fs.existsSync(filePath)) {
     return notFound();
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { data, content } = matter(fileContent);
+  const { content, data } = matter(fileContent);
 
   return (
     <main className="bg-white text-gray-900 px-4 py-10">
