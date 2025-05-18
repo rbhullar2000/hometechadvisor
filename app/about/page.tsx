@@ -16,7 +16,7 @@ export default function AboutPage() {
         Our mission is simple: bring you trustworthy, hands-on recommendations that make your home more connected, more secure, and easier to manage — without needing to be a tech expert.
       </p>
       <p className="text-lg mb-4">
-        Whether you're setting up your first smart device or upgrading an entire system, HomeTechAdvisor is here to guide you.
+        Whether you&rsquo;re setting up your first smart device or upgrading an entire system, HomeTechAdvisor is here to guide you.
       </p>
 
       <div className="mt-10">
@@ -24,7 +24,7 @@ export default function AboutPage() {
         <ul className="list-disc list-inside space-y-2 text-gray-800">
           <li>Independent and unbiased product reviews</li>
           <li>Clear pros and cons — no sugarcoating</li>
-          <li>Buyer&#39;s guides tailored to real-world needs</li>
+          <li>Buyer&rsquo;s guides tailored to real-world needs</li>
           <li>Regular updates as new smart home gear hits the market</li>
         </ul>
       </div>
