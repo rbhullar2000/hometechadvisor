@@ -10,7 +10,7 @@ export default function DoorbellsPage() {
       <div className="max-w-5xl mx-auto space-y-6">
         <h1 className="text-3xl font-bold">Top Smart Video Doorbells (2025)</h1>
         <p className="text-gray-600">
-          Smart video doorbells help you monitor your front door with HD video, two-way audio, motion detection, and real-time alerts — whether you're home or away.
+          Smart video doorbells help you monitor your front door with HD video, two-way audio, motion detection, and real-time alerts — whether you&rsquo;re home or away.
         </p>
 
         <div className="space-y-6">
