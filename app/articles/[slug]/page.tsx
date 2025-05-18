@@ -1,16 +1,18 @@
+// app/articles/[slug]/page.tsx
+
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
-// ✅ Define this type for dynamic params
+// Define props for static params
 type PageProps = {
   params: {
     slug: string;
   };
 };
 
-// ✅ Generate static paths
+// Static route generation for all article slugs
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
   return files.map((filename) => ({
@@ -18,7 +20,7 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ Server component for dynamic article page
+// ✅ Do not make this async — just return sync JSX
 export default function ArticlePage({ params }: PageProps) {
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
