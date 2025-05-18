@@ -29,12 +29,12 @@ export default async function Page({ params }: any) {
         <div className="prose prose-gray max-w-none">
           <ReactMarkdown
             components={{
-              h1: ({ node, ...props }) => <h1 className="text-2xl font-bold mt-6 mb-2" {...props} />,
-              h2: ({ node, ...props }) => <h2 className="text-xl font-semibold mt-4 mb-2" {...props} />,
-              p: ({ node, ...props }) => <p className="mb-4 leading-relaxed" {...props} />,
-              ul: ({ node, ...props }) => <ul className="list-disc list-inside mb-4" {...props} />,
-              li: ({ node, ...props }) => <li className="ml-4" {...props} />,
-              a: ({ node, ...props }) => <a className="text-blue-600 hover:underline" {...props} />,
+              h1: (props) => <h1 className="text-2xl font-bold mt-6 mb-2" {...props} />,
+              h2: (props) => <h2 className="text-xl font-semibold mt-4 mb-2" {...props} />,
+              p: (props) => <p className="mb-4 leading-relaxed" {...props} />,
+              ul: (props) => <ul className="list-disc list-inside mb-4" {...props} />,
+              li: (props) => <li className="ml-4" {...props} />,
+              a: (props) => <a className="text-blue-600 hover:underline" {...props} />,
             }}
           >
             {content}
