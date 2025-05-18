@@ -3,14 +3,13 @@ import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
   return files.map((filename) => ({
     slug: filename.replace('.md', ''),
   }));
 }
 
-// ✅ INLINE typing to satisfy Next.js 15 PageProps constraints
 export default async function ArticlePage({
   params,
 }: {
@@ -31,6 +30,7 @@ export default async function ArticlePage({
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
           <p className="text-gray-500 text-sm mb-6">{data.date}</p>
+
           <div className="prose prose-gray max-w-none">
             <ReactMarkdown>{content}</ReactMarkdown>
           </div>
