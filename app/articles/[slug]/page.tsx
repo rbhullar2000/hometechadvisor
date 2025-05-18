@@ -12,8 +12,13 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ This is the exact shape Next.js expects
-export default async function Page({ params }: { params: { slug: string } }) {
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export default function ArticlePage({ params }: Props) {
   const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
 
   if (!fs.existsSync(filePath)) {
