@@ -3,13 +3,14 @@ import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
 
-type Params = {
-  slug: string;
-};
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
 
-// ✅ Generate static paths
+// Generate static paths for articles
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
   return files.map((filename) => ({
@@ -17,29 +18,16 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ Optionally add metadata
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+// Render article page
+export default async function Page({ params }: PageProps) {
   const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
-  if (!fs.existsSync(filePath)) return {};
+
+  if (!fs.existsSync(filePath)) {
+    return notFound();
+  }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { data } = matter(fileContent);
-
-  return {
-    title: data.title,
-    description: data.excerpt,
-  };
-}
-
-// ✅ Actual page component
-export default async function Page({ params }: { params: Params }) {
-  const { slug } = params;
-  const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
-
-  if (!fs.existsSync(filePath)) return notFound();
-
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { content, data } = matter(fileContent);
+  const { data, content } = matter(fileContent);
 
   return (
     <main className="bg-white text-gray-900 px-4 py-10">
@@ -47,7 +35,7 @@ export default async function Page({ params }: { params: Params }) {
         <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
         <p className="text-gray-500 text-sm mb-6">{data.date}</p>
 
-        <div className="prose prose-gray max-w-none">
+        <div className="prose max-w-none">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
       </div>
