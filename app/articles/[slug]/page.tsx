@@ -10,7 +10,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// 👇 Fix: define inline props instead of PageProps
 export default async function ArticlePage({
   params,
 }: {
@@ -38,7 +37,7 @@ export default async function ArticlePage({
         </div>
       </main>
     );
-  } catch (err) {
+  } catch {
     return (
       <main className="p-10 text-center">
         <h1 className="text-2xl font-bold">Article Not Found</h1>
