@@ -4,14 +4,6 @@ import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 
-// ✅ Correctly typed PageProps
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
-// ✅ Generates static paths
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
 
@@ -20,8 +12,8 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ Do NOT make `params` async or use await on it
-export default async function Page({ params }: PageProps) {
+// ✅ NO custom PageProps, use inline typing for params
+export default async function Page({ params }: { params: { slug: string } }) {
   const slug = params.slug;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
