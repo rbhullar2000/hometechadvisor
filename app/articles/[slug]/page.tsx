@@ -1,35 +1,39 @@
-import { getArticle, getAllArticleSlugs } from '@/lib/articles';
-import { notFound } from 'next/navigation';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
-type Props = {
+interface PageProps {
   params: {
     slug: string;
   };
-};
-
-// ✅ Pre-generates all static paths (e.g. /articles/top-smart-doorbells)
-export async function generateStaticParams() {
-  return getAllArticleSlugs();
 }
 
-export default async function ArticlePage({ params }: Props) {
-  const article = getArticle(params.slug);
+export async function generateStaticParams() {
+  const articlesPath = path.join(process.cwd(), 'content/articles');
+  const files = fs.readdirSync(articlesPath);
 
-  if (!article) {
-    notFound();
+  return files.map((file) => ({
+    slug: file.replace(/\.md$/, ''),
+  }));
+}
+
+export default function ArticlePage({ params }: PageProps) {
+  const { slug } = params;
+  const articlePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
+
+  if (!fs.existsSync(articlePath)) {
+    return <div className="p-10 text-red-500">Article not found.</div>;
   }
 
-  return (
-    <main className="bg-white text-gray-900 px-4 py-10">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-2">{article.metadata.title}</h1>
-        <p className="text-gray-500 text-sm mb-6">{article.metadata.date}</p>
+  const fileContent = fs.readFileSync(articlePath, 'utf8');
+  const { data, content } = matter(fileContent);
 
-        <div className="prose max-w-none">
-          <ReactMarkdown>{article.content}</ReactMarkdown>
-        </div>
-      </div>
+  return (
+    <main className="prose prose-lg mx-auto py-12 px-4">
+      <h1>{data.title}</h1>
+      <p className="text-sm text-gray-500">{data.date}</p>
+      <ReactMarkdown>{content}</ReactMarkdown>
     </main>
   );
 }
