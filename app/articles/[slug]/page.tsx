@@ -2,31 +2,26 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
-
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
-  const articlesPath = path.join(process.cwd(), 'content/articles');
-  const files = fs.readdirSync(articlesPath);
+  const articlesDir = path.join(process.cwd(), 'content/articles');
+  const files = fs.readdirSync(articlesDir);
 
-  return files.map((file) => ({
-    slug: file.replace(/\.md$/, ''),
+  return files.map((filename) => ({
+    slug: filename.replace(/\.md$/, ''),
   }));
 }
 
-export default function ArticlePage({ params }: PageProps) {
-  const { slug } = params;
-  const articlePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
+// ⚠️ NO custom type. Destructure `params` directly.
+export default function ArticlePage({ params }: { params: { slug: string } }) {
+  const articlePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
 
   if (!fs.existsSync(articlePath)) {
-    return <div className="p-10 text-red-500">Article not found.</div>;
+    notFound();
   }
 
-  const fileContent = fs.readFileSync(articlePath, 'utf8');
+  const fileContent = fs.readFileSync(articlePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
   return (
