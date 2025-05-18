@@ -11,29 +11,26 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ArticlePage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const filePath = path.join(
-    process.cwd(),
-    'content/articles',
-    `${params.slug}.md`
-  );
+export default function ArticlePage({ params }: any) {
+  const slug = params?.slug;
 
-  if (!fs.existsSync(filePath)) {
-    notFound();
+  try {
+    const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
+    if (!fs.existsSync(filePath)) {
+      return notFound();
+    }
+
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const { content, data } = matter(fileContent);
+
+    return (
+      <main className="prose mx-auto px-6 py-12">
+        <h1 className="text-3xl font-bold">{data.title}</h1>
+        <p className="text-sm text-gray-500 mb-4">{data.date}</p>
+        <ReactMarkdown>{content}</ReactMarkdown>
+      </main>
+    );
+  } catch (err) {
+    return notFound();
   }
-
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { content, data } = matter(fileContent);
-
-  return (
-    <main className="prose mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold">{data.title}</h1>
-      <p className="text-sm text-gray-500 mb-4">{data.date}</p>
-      <ReactMarkdown>{content}</ReactMarkdown>
-    </main>
-  );
 }
