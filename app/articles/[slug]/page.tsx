@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 
+// This tells Next.js which routes to generate statically at build time
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
   return files.map((filename) => ({
@@ -11,7 +12,7 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ FIXED: Proper async page export with correct inline typing
+// ✅ Correctly typed page export for dynamic routes
 export default async function Page({
   params,
 }: {
@@ -20,7 +21,6 @@ export default async function Page({
   const { slug } = params;
   const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
 
-  // Gracefully handle missing article
   if (!fs.existsSync(filePath)) {
     return notFound();
   }
