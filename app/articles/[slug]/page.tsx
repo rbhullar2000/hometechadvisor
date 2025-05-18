@@ -5,17 +5,21 @@ import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
+  const articlesDir = path.join(process.cwd(), 'content/articles');
+  const files = fs.readdirSync(articlesDir);
 
   return files.map((filename) => ({
     slug: filename.replace('.md', ''),
   }));
 }
 
-// ✅ NO custom PageProps, use inline typing for params
-export default async function Page({ params }: { params: { slug: string } }) {
-  const slug = params.slug;
-  const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
+// ✅ This is the only allowed format in Next.js App Router
+export default async function Page({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
 
   if (!fs.existsSync(filePath)) {
     return notFound();
