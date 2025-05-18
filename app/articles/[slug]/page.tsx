@@ -3,22 +3,33 @@ import path from 'path';
 import matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default async function Page({ params }: any) {
-  const slug = params.slug;
-  const filePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
+// Optional: Type-safe metadata if used
+type Frontmatter = {
+  title: string;
+  date: string;
+  excerpt?: string;
+};
+
+export default async function PostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.md`);
 
   if (!fs.existsSync(filePath)) {
     return (
-      <main className="px-6 py-20 text-center">
-        <h1 className="text-2xl font-bold">Article Not Found</h1>
-        <p className="text-gray-600 mt-2">The requested article does not exist.</p>
+      <main className="p-10 text-center">
+        <h1 className="text-2xl font-bold">Post not found</h1>
       </main>
     );
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { content, data } = matter(fileContent);
+  const { content, data } = matter(fileContent) as {
+    content: string;
+    data: Frontmatter;
+  };
 
   return (
     <main className="bg-white text-gray-900 px-4 py-10">
