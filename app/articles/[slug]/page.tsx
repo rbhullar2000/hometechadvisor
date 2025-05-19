@@ -31,7 +31,6 @@ export default async function ArticlePage({ params }: { params: { slug: string }
     return (
       <main className="bg-white text-gray-900 px-4 py-16">
         <article className="max-w-4xl mx-auto space-y-10">
-
           {/* Cover Image */}
           {data.coverImage && (
             <section>
@@ -55,6 +54,55 @@ export default async function ArticlePage({ params }: { params: { slug: string }
           <section className="prose prose-lg prose-slate max-w-none">
             <ReactMarkdown>{content}</ReactMarkdown>
           </section>
+
+          {/* Lock Comparison Section — Conditional */}
+          {params.slug === 'smart-lock-showdown' && (
+            <section className="space-y-12 mt-20">
+              <h2 className="text-3xl font-semibold text-gray-900 border-b pb-2">
+                Installation: Retrofit vs Replacement
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">August</h3>
+                  <ul className="space-y-2 text-sm leading-relaxed">
+                    <li><strong>Install Time:</strong> ~10 minutes</li>
+                    <li><strong>Tools Required:</strong> None (basic screwdriver optional)</li>
+                    <li><strong>Process:</strong> Mounts inside over the existing deadbolt thumbturn.</li>
+                    <li><strong>Skill Level:</strong> Beginner-friendly; no door modification needed.</li>
+                  </ul>
+                  <p className="mt-4 text-sm text-gray-600">
+                    The August lock excels here. You keep your existing deadbolt (and keys), and the smart unit simply attaches
+                    over the interior lock. No drilling or replacing parts. Ideal for renters or anyone hesitant about permanent changes.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Schlage</h3>
+                  <ul className="space-y-2 text-sm leading-relaxed">
+                    <li><strong>Install Time:</strong> ~25–30 minutes</li>
+                    <li><strong>Tools Required:</strong> Screwdriver, possibly chisel (for some older doors)</li>
+                    <li><strong>Process:</strong> Complete removal of the old deadbolt; installs a full smart deadbolt.</li>
+                    <li><strong>Skill Level:</strong> Intermediate. Not hard, but more hands-on.</li>
+                  </ul>
+                  <p className="mt-4 text-sm text-gray-600">
+                    Schlage requires you to fully replace your door's lock, including the latch and strike plate.
+                    The payoff is a fully integrated, tamper-resistant unit with a keypad and built-in Wi-Fi.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-10 rounded-lg border border-gray-200 bg-white px-6 py-5">
+                <div className="text-base text-gray-900 font-semibold mb-3">Verdict</div>
+                <p className="text-base text-gray-800 font-medium">
+                  <strong>Winner: August</strong> – For ease and minimal installation.
+                </p>
+                <p className="text-base text-gray-800 font-medium mt-2">
+                  <strong>Winner: Schlage</strong> – For durability and integrated security.
+                </p>
+              </div>
+            </section>
+          )}
         </article>
       </main>
     );
