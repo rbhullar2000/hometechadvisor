@@ -27,7 +27,7 @@ export default function ArticleList() {
       {posts.map((post) => (
         <Link
           key={post.slug}
-          href={`/posts/${post.slug}`}
+          href={`/articles/${post.slug}`} // ✅ Fixed path
           className="group block bg-white rounded shadow hover:shadow-lg overflow-hidden transition"
         >
           {post.coverImage && (
