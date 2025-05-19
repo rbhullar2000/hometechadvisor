@@ -15,7 +15,7 @@ export default function ThermostatsPage() {
 
         <div className="space-y-6">
           {thermostats.map((p) => (
-            <div key={p.slug}>
+            <div key={p.reviewSlug}>
               <ProductCard
                 title={`#${p.rank} — ${p.title}`}
                 description={p.description}

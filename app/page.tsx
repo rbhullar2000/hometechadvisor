@@ -84,7 +84,7 @@ export default function HomePage() {
             {latestNews.map((item, index) => (
               <Link
                 key={item.slug}
-                href={`/posts/${item.slug}`}
+                href={`/articles/${item.slug}`} // ✅ FIXED
                 className="block bg-[#1a1a3c] hover:bg-[#2a2a4c] p-4 rounded transition"
               >
                 <p className="text-sm text-gray-400 mb-1">#{index + 1}</p>
@@ -125,7 +125,7 @@ export default function HomePage() {
             {featured.map((post) => (
               <Link
                 key={post.slug}
-                href={`/posts/${post.slug}`}
+                href={`/articles/${post.slug}`} // ✅ FIXED
                 className="block bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition"
               >
                 <div className="relative aspect-[16/9]">
