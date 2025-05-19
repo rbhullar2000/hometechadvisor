@@ -11,7 +11,7 @@ export default function HomePage() {
     { name: 'Smart Locks', icon: <Lock className="w-6 h-6 text-blue-500" />, href: '/categories/locks' },
     { name: 'Video Doorbells', icon: <Bell className="w-6 h-6 text-blue-500" />, href: '/categories/doorbells' },
     { name: 'Thermostats', icon: <Thermometer className="w-6 h-6 text-blue-500" />, href: '/categories/thermostats' },
-    { name: 'Lighting', icon: <Lightbulb className="w-6 h-6 text-blue-500" />, href: '/categories/lighting' },
+    { name: 'Lighting', icon: <Lightbulb className="w-6 h-6 text-blue-500" />, href: '/categories/lights' },
   ];
 
   const featured = [
