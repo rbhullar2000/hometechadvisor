@@ -1,16 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './content/**/*.{md,mdx}',
-  ],
+  content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {
-      colors: {
-        brandNavy: '#0c0c2c', // TechRadar-style dark navy
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };
