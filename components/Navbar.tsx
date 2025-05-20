@@ -12,8 +12,8 @@ export default function Navbar() {
 
   const linkClass = (path: string) =>
     `block px-4 py-2 rounded ${
-      pathname === path ? 'font-semibold text-blue-600' : 'text-gray-300 hover:text-white'
-    }`;
+        pathname === path ? 'font-semibold text-blue-600' : 'text-gray-300 hover:text-white'
+      }`;
 
   return (
     <nav className="relative z-50">
@@ -35,15 +35,9 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden md:flex space-x-4">
-          <Link href="/" className={linkClass('/')}>
-            Home
-          </Link>
-          <Link href="/reviews" className={linkClass('/reviews')}>
-            Reviews
-          </Link>
-          <Link href="/categories" className={linkClass('/categories')}>
-            Categories
-          </Link>
+          <Link href="/" className={linkClass('/')}>Home</Link>
+          <Link href="/reviews" className={linkClass('/reviews')}>Reviews</Link>
+          <Link href="/categories" className={linkClass('/categories')}>Categories</Link>
         </div>
 
         {/* Mobile menu toggle */}
@@ -55,15 +49,9 @@ export default function Navbar() {
       {/* Mobile dropdown menu */}
       {isOpen && (
         <div className="md:hidden bg-[#0c0c2c] text-white px-4 py-4 space-y-2">
-          <Link href="/" onClick={() => setIsOpen(false)} className={linkClass('/')}>
-            Home
-          </Link>
-          <Link href="/reviews" onClick={() => setIsOpen(false)} className={linkClass('/reviews')}>
-            Reviews
-          </Link>
-          <Link href="/categories" onClick={() => setIsOpen(false)} className={linkClass('/categories')}>
-            Categories
-          </Link>
+          <Link href="/" className={linkClass('/')} onClick={() => setIsOpen(false)}>Home</Link>
+          <Link href="/reviews" className={linkClass('/reviews')} onClick={() => setIsOpen(false)}>Reviews</Link>
+          <Link href="/categories" className={linkClass('/categories')} onClick={() => setIsOpen(false)}>Categories</Link>
         </div>
       )}
     </nav>
