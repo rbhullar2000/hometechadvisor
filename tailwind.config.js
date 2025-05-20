@@ -9,7 +9,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      typography: {
+      typography: (theme) => ({
         DEFAULT: {
           css: {
             maxWidth: '100%',
@@ -53,7 +53,14 @@ module.exports = {
             },
           },
         },
-      },
+        sm: {
+          css: {
+            h1: { fontSize: '1.5rem' },
+            h2: { fontSize: '1.25rem' },
+            p: { fontSize: '0.95rem' },
+          },
+        },
+      }),
     },
   },
   plugins: [require('@tailwindcss/typography')],

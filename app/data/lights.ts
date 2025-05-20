@@ -18,7 +18,7 @@ export const lights = [
     title: 'LIFX Color A19 Wi-Fi Smart Bulb',
     description: 'Bright, vivid, Wi-Fi-connected smart bulb with no hub required.',
     image: '/images/lifx.jpg',
-    link: 'https://www.amazon.ca/dp/B07XLFN9YN?tag=yourtag-20',
+    link: 'hhttps://www.amazon.com/LIFX-Color-800lm-Edison-Screw/dp/B08BL16M81?th=1',
     rank: 2,
     reviewBody: 'LIFX bulbs are bright, colorful, and don’t need a hub. Great for those who want rich lighting effects with Wi-Fi control.',
     pros: ['No hub required', 'Extremely bright', 'Powerful colors'],
