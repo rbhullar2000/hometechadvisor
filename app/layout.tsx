@@ -17,7 +17,7 @@ export default function RootLayout({
           </div>
 
           {/* Push content down so it's not hidden behind navbar */}
-          <main className="flex-grow pt-20">{children}</main>
+          <main className="flex-grow pt-16">{children}</main>
 
           <Footer />
         </div>
