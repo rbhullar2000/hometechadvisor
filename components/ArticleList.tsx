@@ -27,22 +27,22 @@ export default function ArticleList() {
       {posts.map((post) => (
         <Link
           key={post.slug}
-          href={`/articles/${post.slug}`} // ✅ Fixed path
-          className="group block bg-white rounded shadow hover:shadow-lg overflow-hidden transition"
+          href={`/articles/${post.slug}`}
+          className="group block bg-white rounded shadow hover:shadow-lg overflow-hidden transition border border-gray-100"
         >
           {post.coverImage && (
-            <div className="relative aspect-[16/9]">
-              <Image
-                src={post.coverImage}
-                alt={post.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform"
-              />
-            </div>
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              width={640}
+              height={360}
+              className="w-full h-auto object-cover"
+              priority
+            />
           )}
           <div className="p-4">
             <h3 className="text-xl font-semibold group-hover:text-blue-600">{post.title}</h3>
-            <p className="text-sm text-gray-500">{post.date}</p>
+            <p className="text-sm text-gray-500">{new Date(post.date).toLocaleDateString()}</p>
             {post.description && (
               <p className="mt-1 text-gray-700 text-sm">{post.description}</p>
             )}

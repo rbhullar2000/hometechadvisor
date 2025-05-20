@@ -11,16 +11,18 @@ type ProductCardProps = {
 
 export default function ProductCard({ title, description, link, image }: ProductCardProps) {
   return (
-    <div className="border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
-      <div className="relative w-full h-48">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-      </div>
+    <div className="border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition bg-white">
+      {/* Fixed width, auto height image */}
+      <div className="relative w-full aspect-[4/3]">
+  <Image
+    src={image}
+    alt={title}
+    fill
+    className="object-cover rounded-t-lg"
+  />
+</div>
+
+      {/* Content */}
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-2">{title}</h2>
         <p className="mb-4 text-sm text-gray-700">{description}</p>

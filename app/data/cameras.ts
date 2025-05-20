@@ -2,10 +2,10 @@ export const cameras = [
   {
     slug: "arlo-pro-4",
     reviewSlug: "arlo-pro-4",
-    title: "Arlo Pro 4 Spotlight Camera",
+    title: "Arlo Pro 5S Spotlight Camera",
     description: "2K HDR video with color night vision and smart alerts.",
     image: "/images/arlo-pro-4.jpg",
-    link: "https://www.amazon.ca/dp/B08R8FLGCB?tag=yourtag-20",
+    link: "https://www.amazon.ca/Arlo-Spotlight-Wire-Free-Dual-Band-Strongest/dp/B0DNTZDDFS/ref=asc_df_B0DNTZDDFS?mcid=5789dea012d137e2b6f36f2d190d03d8&tag=googleshopc0c-20&linkCode=df0&hvadid=706724917149&hvpos=&hvnetw=g&hvrand=14563227459618548657&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9001513&hvtargid=pla-2393899678220&gad_source=1&th=1",
     rank: 1,
     reviewBody: `The Arlo Pro 4 is a standout option in the increasingly crowded smart home security market, combining excellent video quality, thoughtful features, and wireless convenience. Its 2K HDR camera delivers noticeably sharper footage than standard 1080p rivals, and the inclusion of color night vision adds a layer of security many homeowners will appreciate — especially for spotting vehicles or people after dark.
 
