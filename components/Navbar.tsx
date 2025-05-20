@@ -11,17 +11,17 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const linkClass = (path: string) =>
-    `block px-4 py-2 rounded hover:bg-gray-100 ${
-      pathname === path ? 'font-semibold text-blue-600' : 'text-gray-300'
+    `block px-4 py-2 rounded ${
+      pathname === path ? 'font-semibold text-blue-600' : 'text-gray-300 hover:text-white'
     }`;
 
   return (
     <nav className="relative z-50">
-      {/* Background Gradient */}
+      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0c0c2c] to-[#111132] z-0" />
 
+      {/* Main navbar content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo */}
         <Link href="/" className="flex items-center gap-2 text-white">
           <Image
             src="/images/hometech.png"
@@ -33,7 +33,7 @@ export default function Navbar() {
           <span className="text-lg font-bold">HomeTechAdvisor</span>
         </Link>
 
-        {/* Desktop Links */}
+        {/* Desktop links */}
         <div className="hidden md:flex space-x-4">
           <Link href="/" className={linkClass('/')}>
             Home
@@ -46,22 +46,22 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        {/* Mobile menu toggle */}
+        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white">
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile dropdown menu */}
       {isOpen && (
-        <div className="md:hidden px-4 pb-4 space-y-2 bg-[#0c0c2c] text-sm">
-          <Link href="/" className={linkClass('/')} onClick={() => setIsOpen(false)}>
+        <div className="md:hidden bg-[#0c0c2c] text-white px-4 py-4 space-y-2">
+          <Link href="/" onClick={() => setIsOpen(false)} className={linkClass('/')}>
             Home
           </Link>
-          <Link href="/reviews" className={linkClass('/reviews')} onClick={() => setIsOpen(false)}>
+          <Link href="/reviews" onClick={() => setIsOpen(false)} className={linkClass('/reviews')}>
             Reviews
           </Link>
-          <Link href="/categories" className={linkClass('/categories')} onClick={() => setIsOpen(false)}>
+          <Link href="/categories" onClick={() => setIsOpen(false)} className={linkClass('/categories')}>
             Categories
           </Link>
         </div>
