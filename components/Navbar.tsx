@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
@@ -19,8 +20,15 @@ export default function Navbar() {
 
       {/* Navbar Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold text-white">
-          HomeTechAdvisor
+        <Link href="/" className="flex items-center gap-2 text-white">
+          <Image
+            src="/images/hometech.png"
+            alt="HomeTechAdvisor Logo"
+            width={100}
+            height={100}
+            className="object-contain"
+          />
+          <span className="text-xl font-bold">HomeTechAdvisor</span>
         </Link>
         <div className="space-x-4">
           <Link href="/" className={linkClass('/')}>
@@ -30,8 +38,8 @@ export default function Navbar() {
             Reviews
           </Link>
           <Link href="/categories" className={linkClass('/categories')}>
-  Categories
-</Link>
+            Categories
+          </Link>
         </div>
       </div>
     </nav>
