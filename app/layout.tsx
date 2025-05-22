@@ -2,6 +2,12 @@ import './globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import CookieBanner from '../components/CookieBanner';
+import Script from 'next/script';
+
+export const metadata = {
+  title: 'HomeTechAdvisor | Smart Home Reviews & Buying Guides',
+  description: 'Expert reviews, guides, and comparisons of the best smart home gadgets of 2025.',
+};
 
 export default function RootLayout({
   children,
@@ -10,8 +16,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Google Analytics (GA4) */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-QH4LVLW2LJ"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QH4LVLW2LJ');
+          `}
+        </Script>
+      </head>
       <body className="bg-white text-gray-900">
-        {/* Cookie Consent Banner */}
         <CookieBanner />
 
         <div className="flex flex-col min-h-screen">
@@ -20,10 +40,9 @@ export default function RootLayout({
             <Navbar />
           </div>
 
-          {/* Main Content */}
+          {/* Push content down so it's not hidden behind navbar */}
           <main className="flex-grow pt-16">{children}</main>
 
-          {/* Footer */}
           <Footer />
         </div>
       </body>
