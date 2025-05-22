@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.hometechadvisor.com
+
+# Sitemaps
+Sitemap: https://www.hometechadvisor.com/sitemap.xml
