@@ -12,34 +12,34 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            fontSize: '0.875rem', // Base ~14px
+            fontSize: '0.875rem',
             lineHeight: '1.75',
             color: theme('colors.gray.800'),
             maxWidth: '100%',
             h1: {
-              fontSize: '1.5rem', // ~24px
+              fontSize: '1.5rem',
               fontWeight: '700',
               marginTop: '2rem',
               marginBottom: '1rem',
             },
             h2: {
-              fontSize: '1.25rem', // ~20px
+              fontSize: '1.25rem',
               fontWeight: '600',
               marginTop: '1.75rem',
               marginBottom: '0.75rem',
             },
             h3: {
-              fontSize: '1.125rem', // ~18px
+              fontSize: '1.125rem',
               fontWeight: '600',
               marginTop: '1.5rem',
               marginBottom: '0.5rem',
             },
             p: {
-              fontSize: '0.875rem', // ~14px
+              fontSize: '0.875rem',
               marginBottom: '1rem',
             },
             li: {
-              fontSize: '0.875rem', // ~14px
+              fontSize: '0.875rem',
               marginBottom: '0.5rem',
             },
             ul: {
