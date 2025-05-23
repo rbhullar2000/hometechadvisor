@@ -7,7 +7,7 @@ import Image from 'next/image';
 type Post = {
   slug: string;
   title: string;
-  date: string;
+  date?: string;
   description: string;
   coverImage?: string;
 };
@@ -42,7 +42,11 @@ export default function ArticleList() {
           )}
           <div className="p-4">
             <h3 className="text-xl font-semibold group-hover:text-blue-600">{post.title}</h3>
-            <p className="text-sm text-gray-500">{new Date(post.date).toLocaleDateString()}</p>
+            <p className="text-sm text-gray-500">
+              {post.date && !isNaN(new Date(post.date).getTime())
+                ? new Date(post.date).toLocaleDateString()
+                : 'No date'}
+            </p>
             {post.description && (
               <p className="mt-1 text-gray-700 text-sm">{post.description}</p>
             )}

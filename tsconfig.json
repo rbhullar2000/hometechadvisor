@@ -1,42 +1,50 @@
-{
-  "compilerOptions": {
-    "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "types": [], // ✅ Prevents Next.js from using auto-generated .next/types
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "next-env.d.ts",
-    ".next/types/**/*.ts"
+/** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme');
+
+module.exports = {
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './content/**/*.{md,mdx}',
   ],
-  "exclude": [
-    "node_modules",
-    ".next"
-  ] // ✅ Ensures cached route types are ignored
-}
+  theme: {
+    extend: {
+      typography: (theme) => ({
+  DEFAULT: {
+    css: {
+      fontSize: '0.875rem',
+      lineHeight: '1.75',
+      color: theme('colors.gray.800'),
+      maxWidth: '100%',
+      h1: {
+        fontSize: '1.5rem', // ~24px
+        fontWeight: '700',
+        marginTop: '2rem',
+        marginBottom: '1rem',
+      },
+      h2: {
+        fontSize: '1.25rem', // ~20px
+        fontWeight: '600',
+        marginTop: '1.75rem',
+        marginBottom: '0.75rem',
+      },
+      h3: {
+        fontSize: '1.125rem', // ~18px
+        fontWeight: '600',
+        marginTop: '1.5rem',
+        marginBottom: '0.5rem',
+      },
+      p: {
+        fontSize: '0.875rem',
+        marginBottom: '1rem',
+      },
+      li: {
+        fontSize: '0.875rem',
+      },
+    },
+  },
+}),
+    },
+  },
+  plugins: [require('@tailwindcss/typography')],
+};
