@@ -74,7 +74,7 @@ export default function HomePage() {
                 The Future of Home Tech—Tested & Reviewed
               </h1>
               <p className="text-lg md:text-xl text-gray-200 max-w-xl drop-shadow">
-                From security to comfort, we help you choose the best smart devices.
+                From home security to everyday comfort, we help you choose the best smart devices.
               </p>
             </div>
           </div>
