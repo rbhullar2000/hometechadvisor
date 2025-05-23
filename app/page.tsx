@@ -68,7 +68,7 @@ export default function HomePage() {
               className="object-cover rounded"
               priority
             />
-            <div className="absolute inset-0 bg-[#0c0c2c]/60" />
+            {/*  <div className="absolute inset-0 bg-[#0c0c2c]/60" /> */}
             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-10 z-10">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-md">
                 The Future of Home Tech—Tested & Reviewed
