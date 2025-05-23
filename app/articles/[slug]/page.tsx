@@ -24,13 +24,14 @@ export default async function ArticlePage({ params }: { params: { slug: string }
       components: { BuyOnAmazon },
     });
 
-    const formattedDate = frontmatter.date
-      ? new Date(frontmatter.date).toLocaleDateString(undefined, {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })
-      : null;
+    const formattedDate =
+  frontmatter.date && (typeof frontmatter.date === 'string' || typeof frontmatter.date === 'number')
+    ? new Date(frontmatter.date).toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : '';
 
     return (
       <main className="bg-white text-gray-900 px-6 py-20">
