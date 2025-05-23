@@ -53,9 +53,9 @@ export default async function ArticlePage({ params }: { params: { slug: string }
             {formattedDate && <p className="text-base text-gray-500">{formattedDate}</p>}
           </header>
 
-          <section className="prose prose-lg prose-slate max-w-none">
-            {content}
-          </section>
+         <section className="prose prose-lg prose-slate max-w-none">
+  {content as React.ReactNode}
+</section>
         </article>
       </main>
     );
