@@ -68,13 +68,13 @@ export default function HomePage() {
               className="object-cover rounded"
               priority
             />
-            <div className="absolute inset-0 bg-[#0c0c2c]/60" />
+            {/* <div className="absolute inset-0 bg-[#0c0c2c]/60" /> */}
             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-10 z-10">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-md">
-                10 Best Smart Security Cameras for 2025
+                The Future of Home Tech — Tested & Reviewed
               </h1>
               <p className="text-lg md:text-xl text-gray-200 max-w-xl drop-shadow">
-                From AI detection to 2K resolution — we rank the best wireless cams that secure your home and your privacy.
+                From home security to everyday comfort, we help you choose the best smart devices.
               </p>
             </div>
           </div>
