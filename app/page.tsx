@@ -35,25 +35,25 @@ export default function HomePage() {
   ];
 
   const latestNews = [
-    {
-      title: 'Ultimate Wi-Fi Guide for 2025: Best Systems for Every Home',
-      subtitle: 'Reliable Wi-Fi is essential in 2025',
-      slug: 'ultimate-wifi-guide-2025',
-      image: '/images/wifi-guide-thumb.jpg',
-    },
-    {
-      title: 'Alexa vs Google: Which Assistant Wins?',
-      subtitle: 'Real-world tests on integrations and privacy.',
-      slug: 'google-vs-alexa',
-      image: '/images/alexa-vs-google.png',
-    },
-    {
-      title: 'Top Smart Doorbells for 2025',
-      subtitle: 'Compare Ring, Nest, Eufy and more.',
-      slug: 'top-smart-doorbells',
-      image: '/images/doorbells.png',
-    },
-  ];
+  {
+    title: 'Smart Camera Buying Guide for 2025',
+    subtitle: 'Everything you need to know about smart cameras in 2025.',
+    slug: 'smart-camera-guide',
+    image: '/images/cameras-thumb.jpg',
+  },
+  {
+    title: 'Ultimate Wi-Fi Guide for 2025: Best Systems for Every Home',
+    subtitle: 'Reliable Wi-Fi is essential in 2025',
+    slug: 'ultimate-wifi-guide-2025',
+    image: '/images/wifi-guide-thumb.jpg',
+  },
+  {
+    title: 'Alexa vs Google: Which Assistant Wins?',
+    subtitle: 'Real-world tests on integrations and privacy.',
+    slug: 'google-vs-alexa',
+    image: '/images/alexa-vs-google.png',
+  },
+];
 
   return (
     <div className="bg-white text-gray-900 min-h-screen">
