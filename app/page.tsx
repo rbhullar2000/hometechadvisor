@@ -36,10 +36,10 @@ export default function HomePage() {
 
   const latestNews = [
     {
-      title: 'Best Smart Cameras of 2025',
-      subtitle: 'Top 10 picks for indoor/outdoor cameras.',
-      slug: 'best-smart-cameras-2025',
-      image: '/images/cameras.png',
+      title: 'Ultimate Wi-Fi Guide for 2025: Best Systems for Every Home',
+      subtitle: 'Reliable Wi-Fi is essential in 2025',
+      slug: 'wifi-guide-2025',
+      image: '/images/wifi-guide-thumb.jpg',
     },
     {
       title: 'Alexa vs Google: Which Assistant Wins?',
