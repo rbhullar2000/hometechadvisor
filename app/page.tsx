@@ -35,25 +35,25 @@ export default function HomePage() {
   ];
 
   const latestNews = [
-  {
-    title: 'Smart Camera Buying Guide for 2025',
-    subtitle: 'Everything you need to know about smart cameras in 2025.',
-    slug: 'smart-camera-guide',
-    image: '/images/cameras-thumb.jpg',
-  },
-  {
-    title: 'Ultimate Wi-Fi Guide for 2025: Best Systems for Every Home',
-    subtitle: 'Reliable Wi-Fi is essential in 2025',
-    slug: 'ultimate-wifi-guide-2025',
-    image: '/images/wifi-guide-thumb.jpg',
-  },
-  {
-    title: 'Alexa vs Google: Which Assistant Wins?',
-    subtitle: 'Real-world tests on integrations and privacy.',
-    slug: 'google-vs-alexa',
-    image: '/images/alexa-vs-google.png',
-  },
-];
+    {
+      title: 'Best Smart Cameras of 2025',
+      subtitle: 'Top 10 picks for indoor/outdoor cameras.',
+      slug: 'best-smart-cameras-2025',
+      image: '/images/cameras.png',
+    },
+    {
+      title: 'Alexa vs Google: Which Assistant Wins?',
+      subtitle: 'Real-world tests on integrations and privacy.',
+      slug: 'google-vs-alexa',
+      image: '/images/alexa-vs-google.png',
+    },
+    {
+      title: 'Top Smart Doorbells for 2025',
+      subtitle: 'Compare Ring, Nest, Eufy and more.',
+      slug: 'top-smart-doorbells',
+      image: '/images/doorbells.png',
+    },
+  ];
 
   return (
     <div className="bg-white text-gray-900 min-h-screen">
@@ -68,13 +68,13 @@ export default function HomePage() {
               className="object-cover rounded"
               priority
             />
-            {/*  <div className="absolute inset-0 bg-[#0c0c2c]/60" /> */}
+            <div className="absolute inset-0 bg-[#0c0c2c]/60" />
             <div className="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-10 z-10">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-md">
-                The Future of Home Tech—Tested & Reviewed
+                10 Best Smart Security Cameras for 2025
               </h1>
               <p className="text-lg md:text-xl text-gray-200 max-w-xl drop-shadow">
-                From home security to everyday comfort, we help you choose the best smart devices.
+                From AI detection to 2K resolution — we rank the best wireless cams that secure your home and your privacy.
               </p>
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function HomePage() {
       {/* Category Grid */}
       <section className="py-12 border-t">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-6">Explore Guides</h2>
+          <h2 className="text-3xl font-bold mb-6">Explore Categories</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {categories.map((cat) => (
               <Link
