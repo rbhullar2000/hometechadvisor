@@ -99,7 +99,7 @@ export default function HomePage() {
       {/* Category Grid */}
       <section className="py-12 border-t">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-6">Explore Categories</h2>
+          <h2 className="text-3xl font-bold mb-6">Explore Guides</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {categories.map((cat) => (
               <Link
