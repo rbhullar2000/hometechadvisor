@@ -14,12 +14,12 @@ export default function HomePage() {
   ];
 
   const featured = [
-    {/*   {
-      title: 'Best Smart Cameras of 2025',
-      description: 'Top 10 picks for indoor/outdoor cameras with Alexa, Google, and Apple support.',
-      image: '/images/cameras-thumb.jpg',
-      slug: 'best-smart-cameras-2025',
-    },*/}
+//    {
+//      title: 'Best Smart Cameras of 2025',
+//      description: 'Top 10 picks for indoor/outdoor cameras with Alexa, Google, and Apple support.',
+//      image: '/images/cameras-thumb.jpg',
+//      slug: 'best-smart-cameras-2025',
+//    },
     {
       title: 'Smart Lock Face-Off: August vs Schlage',
       description: 'Side-by-side comparison of features, installation, and integration.',
