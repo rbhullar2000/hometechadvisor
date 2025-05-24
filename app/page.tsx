@@ -38,7 +38,7 @@ export default function HomePage() {
     {
       title: 'Ultimate Wi-Fi Guide for 2025: Best Systems for Every Home',
       subtitle: 'Reliable Wi-Fi is essential in 2025',
-      slug: 'wifi-guide-2025',
+      slug: 'ultimate-wifi-guide-2025',
       image: '/images/wifi-guide-thumb.jpg',
     },
     {
