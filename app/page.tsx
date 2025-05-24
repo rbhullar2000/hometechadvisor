@@ -96,7 +96,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Category Grid */}
+      {/* Category Grid */} {/*
       <section className="py-12 border-t">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-6">Explore Categories</h2>
@@ -122,7 +122,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
+*/}
       {/* Featured Reviews */}
       <section className="bg-white py-12 border-t">
         <div className="max-w-6xl mx-auto px-4">
