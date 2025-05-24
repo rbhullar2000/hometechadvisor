@@ -32,7 +32,7 @@ export default function Navbar() {
         <div className="hidden md:flex gap-6">
           <Link href="/" className={linkClass('/')}>Home</Link>
           <Link href="/reviews" className={linkClass('/reviews')}>Reviews</Link>
-          <Link href="/categories" className={linkClass('/categories')}>Categories</Link>
+          {/*  <Link href="/categories" className={linkClass('/categories')}>Categories</Link> */}
         </div>
 
         {/* Mobile Toggle */}
@@ -46,7 +46,7 @@ export default function Navbar() {
         <div className="md:hidden bg-[#0c0c2c] border-t border-gray-700 px-4 pb-4">
           <Link href="/" onClick={() => setIsOpen(false)} className={linkClass('/')}>Home</Link>
           <Link href="/reviews" onClick={() => setIsOpen(false)} className={linkClass('/reviews')}>Reviews</Link>
-          <Link href="/categories" onClick={() => setIsOpen(false)} className={linkClass('/categories')}>Categories</Link>
+        {/*   <Link href="/categories" onClick={() => setIsOpen(false)} className={linkClass('/categories')}>Categories</Link> */}
         </div>
       )}
     </nav>
