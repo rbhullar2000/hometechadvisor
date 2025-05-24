@@ -22,8 +22,8 @@ export default function Navbar() {
           <Image
             src="/images/hometech.png"
             alt="HomeTechAdvisor Logo"
-            width={64}
-            height={64}
+            width={80}
+            height={80}
             className="object-contain"
           />
           <span className="text-lg font-bold whitespace-nowrap">HomeTechAdvisor</span>
