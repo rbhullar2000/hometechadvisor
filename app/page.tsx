@@ -14,12 +14,12 @@ export default function HomePage() {
   ];
 
   const featured = [
-//    {
-//      title: 'Best Smart Cameras of 2025',
-//      description: 'Top 10 picks for indoor/outdoor cameras with Alexa, Google, and Apple support.',
-//      image: '/images/cameras-thumb.jpg',
-//      slug: 'best-smart-cameras-2025',
-//    },
+    {
+      title: 'Best Smart Cameras of 2025',
+      description: 'Top 10 picks for indoor/outdoor cameras with Alexa, Google, and Apple support.',
+      image: '/images/cameras-thumb.jpg',
+      slug: 'best-smart-cameras-2025',
+    },
     {
       title: 'Smart Lock Face-Off: August vs Schlage',
       description: 'Side-by-side comparison of features, installation, and integration.',
@@ -41,12 +41,12 @@ export default function HomePage() {
       slug: 'ultimate-wifi-guide-2025',
       image: '/images/wifi-guide-thumb.jpg',
     },
-    {
-      title: 'Alexa vs Google: Which Assistant Wins?',
-      subtitle: 'Real-world tests on integrations and privacy.',
-      slug: 'google-vs-alexa',
-      image: '/images/alexa-vs-google.png',
-    },
+//    {
+//      title: 'Alexa vs Google: Which Assistant Wins?',
+//      subtitle: 'Real-world tests on integrations and privacy.',
+//      slug: 'google-vs-alexa',
+//      image: '/images/alexa-vs-google.png',
+//    },
     {
       title: 'Top Smart Doorbells for 2025',
       subtitle: 'Compare Ring, Nest, Eufy and more.',
