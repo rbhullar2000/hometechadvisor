@@ -18,9 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Pinterest Domain Verification */}
-       <Script id="pinterest-verify" strategy="afterInteractive">
-  {`<meta name="p:domain_verify" content="6a57b0ad7afed46a3759ac7de61c1357" />`}
-</Script>
+        <meta name="p:domain_verify" content="6a57b0ad7afed46a3759ac7de61c1357" />
 
         {/* Google Analytics (GA4) */}
         <Script
@@ -38,6 +36,7 @@ export default function RootLayout({
       </head>
       <body className="bg-white text-gray-900">
         <CookieBanner />
+
         <div className="flex flex-col min-h-screen">
           {/* Fixed Navbar */}
           <div className="fixed top-0 left-0 w-full z-50 bg-[#0c0c2c]">
