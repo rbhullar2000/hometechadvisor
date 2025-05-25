@@ -1,24 +1,28 @@
+const fs = require('fs');
+const path = require('path');
+
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://www.hometechadvisor.com',
   generateRobotsTxt: true,
   generateIndexSitemap: true,
-  exclude: ['/api/*', '/404', '/_next/*'],
-  changefreq: 'weekly',
-  priority: 0.7,
-  sitemapSize: 5000,
-  transform: async (config, path) => {
-    // Only include valid public-facing routes
-    const excluded = ['/404', '/api', '/api/*', '/_next'];
-    const shouldInclude = !excluded.some((excludedPath) => path.includes(excludedPath));
+  exclude: ['/api/*', '/404', '/_next'],
 
-    return shouldInclude
-      ? {
-          loc: path,
-          changefreq: 'weekly',
-          priority: path === '/' ? 1.0 : 0.7,
+  // Dynamically include /articles/[slug] pages
+  additionalPaths: async (config) => {
+    const articlesDir = path.join(process.cwd(), 'content/articles');
+    const files = fs.readdirSync(articlesDir);
+
+    const articlePaths = files
+      .filter((file) => file.endsWith('.md') || file.endsWith('.mdx'))
+      .map((file) => {
+        const slug = file.replace(/\.mdx?$/, '');
+        return {
+          loc: `/articles/${slug}`,
           lastmod: new Date().toISOString(),
-        }
-      : null;
+        };
+      });
+
+    return articlePaths;
   },
 };
