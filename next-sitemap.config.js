@@ -3,16 +3,22 @@ module.exports = {
   siteUrl: 'https://www.hometechadvisor.com',
   generateRobotsTxt: true,
   generateIndexSitemap: true,
-  exclude: ['/api/*', '/404'], // exclude dynamic/api pages
+  exclude: ['/api/*', '/404', '/_next/*'],
   changefreq: 'weekly',
   priority: 0.7,
-  sitemapSize: 7000,
+  sitemapSize: 5000,
   transform: async (config, path) => {
-    return {
-      loc: path,
-      changefreq: config.changefreq,
-      priority: path === '/' ? 1.0 : 0.7,
-      lastmod: new Date().toISOString(),
-    };
+    // Only include valid public-facing routes
+    const excluded = ['/404', '/api', '/api/*', '/_next'];
+    const shouldInclude = !excluded.some((excludedPath) => path.includes(excludedPath));
+
+    return shouldInclude
+      ? {
+          loc: path,
+          changefreq: 'weekly',
+          priority: path === '/' ? 1.0 : 0.7,
+          lastmod: new Date().toISOString(),
+        }
+      : null;
   },
 };
