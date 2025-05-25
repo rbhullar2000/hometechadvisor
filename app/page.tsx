@@ -41,12 +41,12 @@ export default function HomePage() {
       slug: 'ultimate-wifi-guide-2025',
       image: '/images/wifi-guide-thumb.jpg',
     },
-//    {
-//      title: 'Alexa vs Google: Which Assistant Wins?',
-//      subtitle: 'Real-world tests on integrations and privacy.',
-//      slug: 'google-vs-alexa',
-//      image: '/images/alexa-vs-google.png',
-//    },
+    {
+      title: 'Complete Guide to Home Backup Power: Gas Generators and Battery Systems',
+      subtitle: 'Why Backup Power Matters',
+      slug: 'backup-power-guide',
+      image: '/images/backuppower.png',
+    },
     {
       title: 'Top Smart Doorbells for 2025',
       subtitle: 'Compare Ring, Nest, Eufy and more.',
