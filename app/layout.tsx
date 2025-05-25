@@ -18,7 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Pinterest Domain Verification */}
-        <meta name="p:domain_verify" content="6a57b0ad7afed46a3759ac7de61c1357" />
+       <Script id="pinterest-verify" strategy="afterInteractive">
+  {`<meta name="p:domain_verify" content="6a57b0ad7afed46a3759ac7de61c1357" />`}
+</Script>
 
         {/* Google Analytics (GA4) */}
         <Script
