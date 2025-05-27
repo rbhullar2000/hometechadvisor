@@ -22,11 +22,6 @@ export default function RootLayout({
         <meta name="p:domain_verify" content="6a57b0ad7afed46a3759ac7de61c1357" />
         <link rel="canonical" href="https://www.hometechadvisor.com/" />
         <link rel="icon" href="/favicon.ico" />
-        <title>HomeTechAdvisor | Smart Home Reviews & Buying Guides</title>
-        <meta
-          name="description"
-          content="Expert reviews, guides, and comparisons of the best smart home gadgets of 2025."
-        />
 
         {/* Google Analytics (GA4) */}
         <Script
