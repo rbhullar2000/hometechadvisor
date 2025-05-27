@@ -2,6 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import BuyOnAmazon from '@/components/BuyOnAmazon';
 
@@ -9,6 +10,11 @@ interface Frontmatter {
   title: string;
   date?: string;
   coverImage?: string;
+  excerpt?: string;
+  meta?: {
+    title?: string;
+    description?: string;
+  };
 }
 
 export async function generateStaticParams() {
@@ -17,6 +23,25 @@ export async function generateStaticParams() {
   return files
     .filter((file) => file.endsWith('.mdx'))
     .map((file) => ({ slug: file.replace(/\.mdx$/, '') }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const filePath = path.join(process.cwd(), 'content/articles', `${params.slug}.mdx`);
+  const source = await fs.readFile(filePath, 'utf8');
+
+  const { frontmatter } = await compileMDX<Frontmatter>({
+    source,
+    options: { parseFrontmatter: true },
+  });
+
+  return {
+    title: frontmatter.meta?.title || frontmatter.title,
+    description: frontmatter.meta?.description || frontmatter.excerpt,
+  };
 }
 
 export default async function ArticlePage({ params }: { params: { slug: string } }) {
