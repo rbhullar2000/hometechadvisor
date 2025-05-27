@@ -2,6 +2,11 @@
 
 import Link from 'next/link';
 
+export const metadata = {
+  title: 'Best Smart Devices of 2025 | HomeTechAdvisor',
+  description: 'Discover the top-rated smart devices of 2025, including smart cameras, locks, lights, and more. Trusted reviews and buying advice from HomeTechAdvisor.',
+};
+
 export default function BestSmartDevicesPage() {
   return (
     <main className="min-h-screen bg-white text-gray-900 px-4 py-8">
