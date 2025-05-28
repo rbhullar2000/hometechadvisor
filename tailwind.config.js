@@ -9,6 +9,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        // Inter will now be the default sans font
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {

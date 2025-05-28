@@ -11,9 +11,9 @@ type ProductCardProps = {
 
 export default function ProductCard({ title, description, link, image }: ProductCardProps) {
   return (
-    <div className="border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition bg-white">
+    <div className="border border-gray-200 rounded-lg shadow-xs overflow-hidden hover:shadow-md transition bg-white">
       {/* Fixed width, auto height image */}
-      <div className="relative w-full aspect-[4/3]">
+      <div className="relative w-full aspect-4/3">
   <Image
     src={image}
     alt={title}
@@ -30,7 +30,7 @@ export default function ProductCard({ title, description, link, image }: Product
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="inline-block bg-blue-600 text-white px-4 py-2 rounded-sm hover:bg-blue-700"
         >
           🔗 Buy on Amazon
         </a>

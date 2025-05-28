@@ -11,7 +11,7 @@ export default function BuyOnAmazon({ href }: { href: string }) {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium py-2.5 px-5 rounded-full shadow-sm transition"
+        className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium py-2.5 px-5 rounded-full shadow-xs transition"
       >
         <ShoppingCart size={16} strokeWidth={2} />
         Buy on Amazon

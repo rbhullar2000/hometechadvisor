@@ -42,7 +42,7 @@ export default function LatestArticles() {
           {articles.map((a) => (
             <li key={a.slug} className="flex flex-col sm:flex-row items-start gap-4">
               {a.thumbnail && (
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                   <Image
                     src={a.thumbnail}
                     alt={a.title}

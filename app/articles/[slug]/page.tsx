@@ -73,7 +73,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
               alt={frontmatter.title}
               width={1200}
               height={600}
-              className="w-full h-auto rounded-lg shadow object-cover"
+              className="w-full h-auto rounded-lg shadow-sm object-cover"
             />
           )}
 

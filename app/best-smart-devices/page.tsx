@@ -14,28 +14,28 @@ export default function BestSmartDevicesPage() {
           </p>
 
           {/* Product 1 */}
-          <div className="border border-gray-200 p-4 rounded-lg shadow-sm">
+          <div className="border border-gray-200 p-4 rounded-lg shadow-xs">
             <h2 className="text-xl font-semibold mb-2">1. Nest Learning Thermostat</h2>
             <p className="mb-2">An energy-saving smart thermostat that adapts to your routine. Sleek design, easy integration with Google Home.</p>
             <a
               href="https://www.amazon.ca/dp/B0131RG6VK?tag=yourtag-20"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+              className="inline-block bg-blue-600 text-white px-4 py-2 rounded-sm hover:bg-blue-700"
             >
               🔗 Buy on Amazon
             </a>
           </div>
 
           {/* Product 2 */}
-          <div className="border border-gray-200 p-4 rounded-lg shadow-sm">
+          <div className="border border-gray-200 p-4 rounded-lg shadow-xs">
             <h2 className="text-xl font-semibold mb-2">2. Ring Video Doorbell Pro 2</h2>
             <p className="mb-2">Advanced motion detection and crystal-clear video. A top choice for front-door security.</p>
             <a
               href="https://www.amazon.ca/dp/B08N5N6RSS?tag=yourtag-20"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+              className="inline-block bg-blue-600 text-white px-4 py-2 rounded-sm hover:bg-blue-700"
             >
               🔗 Buy on Amazon
             </a>

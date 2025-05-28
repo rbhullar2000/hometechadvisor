@@ -28,7 +28,7 @@ export default function ArticleList() {
         <Link
           key={post.slug}
           href={`/articles/${post.slug}`}
-          className="group block bg-white rounded shadow hover:shadow-lg overflow-hidden transition border border-gray-100"
+          className="group block bg-white rounded-sm shadow-sm hover:shadow-lg overflow-hidden transition border border-gray-100"
         >
           {post.coverImage && (
             <Image

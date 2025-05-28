@@ -37,13 +37,13 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="bg-white text-gray-900">
+      <body className="bg-white text-gray-900 font-sans antialiased">
         <CookieBanner />
         <div className="flex flex-col min-h-screen">
-          <div className="fixed top-0 left-0 w-full z-50 bg-[#0c0c2c]">
+          <div className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-[#0c0c2c] to-[#1c1c40] shadow-md backdrop-blur-sm">
             <Navbar />
           </div>
-          <main className="flex-grow pt-16">{children}</main>
+          <main className="grow pt-16">{children}</main>
           <Footer />
         </div>
       </body>

@@ -81,7 +81,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/categories/cameras"
-            className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded transition"
+            className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-sm transition"
           >
             Explore Picks →
           </Link>
@@ -97,7 +97,7 @@ export default function HomePage() {
               <Link
                 key={item.slug}
                 href={`/articles/${item.slug}`}
-                className="block bg-[#1a1a3c] hover:bg-[#2a2a4c] p-4 rounded transition"
+                className="block bg-[#1a1a3c] hover:bg-[#2a2a4c] p-4 rounded-sm transition"
               >
                 <p className="text-sm text-gray-400 mb-1">#{index + 1}</p>
                 <h3 className="text-white font-medium">{item.title}</h3>
@@ -117,7 +117,7 @@ export default function HomePage() {
               <Link
                 key={cat.name}
                 href={cat.href}
-                className="rounded overflow-hidden border shadow-sm hover:shadow-md transition"
+                className="rounded overflow-hidden border shadow-xs hover:shadow-md transition"
               >
                 <Image
                   src={cat.image}
@@ -144,7 +144,7 @@ export default function HomePage() {
               <Link
                 key={post.slug}
                 href={`/articles/${post.slug}`}
-                className="block bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition"
+                className="block bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition"
               >
                 <Image
                   src={post.image}
@@ -172,7 +172,7 @@ export default function HomePage() {
               <Link
                 key={post.slug}
                 href={`/articles/${post.slug}`}
-                className="block bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition"
+                className="block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition"
               >
                 <Image
                   src={post.image}

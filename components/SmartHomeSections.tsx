@@ -34,8 +34,8 @@ export default function SmartHomeSections() {
         <h2 className="text-3xl font-bold mb-8">Featured Reviews</h2>
         <div className="grid gap-8 md:grid-cols-3">
           {featured.map((item) => (
-            <Link href={item.href} key={item.title} className="group block bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
-              <div className="relative aspect-[16/9]">
+            <Link href={item.href} key={item.title} className="group block bg-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition">
+              <div className="relative aspect-video">
                 <Image
                   src={item.image}
                   alt={item.alt}
